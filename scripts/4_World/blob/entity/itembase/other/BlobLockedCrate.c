@@ -1,7 +1,7 @@
 class BlobLockedCrate extends Container_Base
 {
     bool isLocked;
-    override bool CanReceiveItemIntoCargo(EnitityAI item)
+    override bool CanReceiveItemIntoCargo(EntityAI item)
     {
         return (!isLocked) & super.CanReceiveItemIntoCargo(item); 
     }
