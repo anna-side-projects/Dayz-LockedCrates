@@ -9,11 +9,16 @@ class BlobActionLockCrate : ActionInteractBase
     override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
         Object target_object = target.GetObject();
-        BlobLockedCrate crate = BlobLockedCrate.Cast(target_object);
-        Crowbar crowbar = Crowbar.Cast(player.GetItemInHands());
-        if(crate && !crate.IsLocked() && !crate.IsOpen() && crowbar)
+        if(target_object.IsItemBase())
         {
-            return true;
+            BlobLockedCrate crate = BlobLockedCrate.Cast(target_object);
+            Crowbar crowbar = Crowbar.Cast(player.GetItemInHands());
+            Print("Crate: "+ crate);
+            Print("Crowbar: " + crowbar);
+            if(crate && !crate.IsLocked() && crowbar)
+            {
+                return true;
+            }
         }
         return false;
     }

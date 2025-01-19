@@ -1,9 +1,18 @@
-class BlobLockedCrate extends Container_Base
+class BlobLockedCrate : Container_Base
 {
-    bool isLocked;
+    bool locked;
+    bool open;
+    BlobLockedCrate()
+    {
+        locked = true;
+    }
     override bool CanReceiveItemIntoCargo(EntityAI item)
     {
-        return (!isLocked) & super.CanReceiveItemIntoCargo(item); 
+        return IsOpen() & super.CanReceiveItemIntoCargo(item); 
+    }
+    override bool CanReleaseCargo(EntityAI attachment)
+    {
+        return !locked & IsOpen();
     }
 
     override void SetActions()
@@ -15,15 +24,44 @@ class BlobLockedCrate extends Container_Base
 
     bool IsLocked()
     {
-        return isLocked;
+        return locked;
     }
 
     void Lock()
     {
-        isLocked = true;
+        locked = true;
+        open = false;
+
     }
     void Unlock()
     {
-        isLocked = false;
+        locked = false;
+    }
+
+    override bool IsOpen()
+    {
+        return (!locked) & open;
+        
+    }
+
+    override void Open()
+    {
+        if(!locked)
+            open = true;
+    }
+
+    override void Close()
+    {
+        open = false;
+    }
+
+    override bool CanDisplayCargo()
+    {
+        return IsOpen();
+    }
+
+    override bool CanReceiveAttachment(EntityAI attachment, int slotId)
+    {
+        return super.CanReceiveAttachment(attachment,slotId) & IsOpen();
     }
 }
