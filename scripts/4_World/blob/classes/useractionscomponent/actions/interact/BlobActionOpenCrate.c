@@ -29,7 +29,7 @@ class BlobActionOpenCrate : ActionInteractBase
         if(crate)
         {
             crate.Open();
-            GetRPCManager.SendRPC(modname, "setOpenRPC", new Param1<string>(true));
+            GetRPCManager().SendRPC(modname, "setOpenRPC", new Param1<string>(true));
         }
     }
 }
