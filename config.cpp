@@ -34,7 +34,7 @@ class CfgVehicles
 	{
 		scope=2;
 		displayName = "Shipment Crate";
-		descriptionShort="Lockable wooden crate for shippments. :)";
+		descriptionShort="Lockable wooden crate for shipments.";
 		model="\DZ\gear\camping\wooden_case.p3d";
 		hologramMaterial="wooden_case";
 		hologramMaterialPath="dz\gear\camping\data";
