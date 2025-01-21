@@ -6,13 +6,9 @@ class BlobLockedCrate : Container_Base
     void BlobLockedCrate()
     {
         locked = true;
+        open = false;
     }
 
-    override void OnInit()
-    {
-        GetRPCManager().AddRPC(modname, "setOpenRPC", this, SinglePlayerExecutionType.Both);
-        GetRPCManager().AddRPC(modname, "setLockedRPC", this, SinglePlayerExecutionType.Both);
-    }
 
     override bool CanReceiveItemIntoCargo(EntityAI item)
     {
