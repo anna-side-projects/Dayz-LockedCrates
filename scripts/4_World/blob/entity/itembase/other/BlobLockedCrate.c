@@ -87,6 +87,8 @@ class BlobLockedCrate : Container_Base
         else
             Close();
 
+        SetSynchDirty();
+
     }
     void setLockedRPC(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
     {
@@ -101,6 +103,7 @@ class BlobLockedCrate : Container_Base
         else
             Unlock();
 
+        SetSynchDirty();
 
     }
 
