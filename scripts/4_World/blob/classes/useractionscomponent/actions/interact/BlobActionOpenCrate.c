@@ -1,10 +1,11 @@
-class BlobActionLockCrate : ActionInteractBase
+
+class BlobActionOpenCrate : ActionInteractBase
 {
-    void BlobActionLockCrate()
+    void BlobActionOpenCrate()
     {
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
         m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
-        m_Text = "Lock";
+        m_Text = "Open";
     }
     override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
@@ -12,8 +13,7 @@ class BlobActionLockCrate : ActionInteractBase
         if(target_object.IsItemBase())
         {
             BlobLockedCrate crate = BlobLockedCrate.Cast(target_object);
-            Crowbar crowbar = Crowbar.Cast(player.GetItemInHands());
-            if(crate && !crate.IsLocked() && crowbar)
+            if(crate && !crate.IsLocked() && !crate.IsOpen())
             {
                 return true;
             }
@@ -27,7 +27,7 @@ class BlobActionLockCrate : ActionInteractBase
         BlobLockedCrate crate = BlobLockedCrate.Cast(target_object);
         if(crate)
         {
-            crate.Lock();
+            crate.Open();
         }
     }
 }

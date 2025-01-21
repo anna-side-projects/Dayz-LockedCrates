@@ -2,7 +2,7 @@ class BlobLockedCrate : Container_Base
 {
     bool locked;
     bool open;
-    BlobLockedCrate()
+    void BlobLockedCrate()
     {
         locked = true;
     }
@@ -20,6 +20,8 @@ class BlobLockedCrate : Container_Base
         super.SetActions();
         AddAction(BlobActionUnlockCrate);
         AddAction(BlobActionLockCrate);
+        AddAction(BlobActionOpenCrate);
+        AddAction(BlobActionCloseCrate);
     }
 
     bool IsLocked()

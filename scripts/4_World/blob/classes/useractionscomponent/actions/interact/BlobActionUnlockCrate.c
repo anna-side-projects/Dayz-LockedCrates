@@ -1,10 +1,10 @@
 class BlobActionUnlockCrate : ActionInteractBase
 {
-    void BlobActionLockCrate()
+    void BlobActionUnlockCrate()
     {
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
         m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
-        m_Text = "Lock";
+        m_Text = "Unlock";
     }
     override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
     {
