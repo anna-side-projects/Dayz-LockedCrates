@@ -16,13 +16,17 @@ class CfgMods
 	class LockedCrate
 	{
 		type = "mod";
-		dependencies[]={"World"}; 
+		dependencies[]={"World", "Mission"}; 
 		class defs
 		{
             class worldScriptModule
             {
                 files[] = {"LockedCrate/scripts/4_World"};
             };
+			class missionScriptModule
+			{
+				files[] = {"LockedCrate/scripts/5_Mission"};
+			}
 		};
 	};
 };
