@@ -2,10 +2,18 @@ class BlobLockedCrate : Container_Base
 {
     bool locked;
     bool open;
+    private string modname = "LockedCrate";
     void BlobLockedCrate()
     {
         locked = true;
     }
+
+    override void OnInit()
+    {
+        GetRPCManager().AddRPC(modname, "setOpenRPC", this, SinglePlayerExecutionType.Both);
+        GetRPCManager().AddRPC(modname, "setLockedRPC", this, SinglePlayerExecutionType.Both);
+    }
+
     override bool CanReceiveItemIntoCargo(EntityAI item)
     {
         return IsOpen() & super.CanReceiveItemIntoCargo(item); 
@@ -66,4 +74,39 @@ class BlobLockedCrate : Container_Base
     {
         return super.CanReceiveAttachment(attachment,slotId) & IsOpen();
     }
+
+    void setOpenRPC(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
+    {
+        Param1<bool> data;
+
+        if(!ctx.Read(data)) return;
+
+        bool toOpen = data.param1;
+        if(toOpen)
+            Open();
+        else
+            Close();
+
+    }
+    void setLockedRPC(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
+    {
+        Param1<bool> data;
+        
+        if(!ctx.Read(data)) return;
+
+        bool toLock = data.param1;
+
+        if(lock)
+            Lock();
+        else
+            Unlock();
+
+
+    }
+
+
+
+
+
+
 }

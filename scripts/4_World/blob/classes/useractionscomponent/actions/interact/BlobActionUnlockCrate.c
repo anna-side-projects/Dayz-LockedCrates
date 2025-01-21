@@ -1,5 +1,6 @@
 class BlobActionUnlockCrate : ActionInteractBase
 {
+    private string modname = "LockedCrate";
     void BlobActionUnlockCrate()
     {
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
@@ -28,6 +29,7 @@ class BlobActionUnlockCrate : ActionInteractBase
         if(crate)
         {
             crate.Unlock();
+            GetRPCManager.SendRPC(modname, "setLockedRPC", new Param1<string>(false));
         }
     }
 }

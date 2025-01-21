@@ -1,6 +1,7 @@
 
 class BlobActionCloseCrate : ActionInteractBase
 {
+    private string modname = "LockedCrate";
     void BlobActionCloseCrate()
     {
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
@@ -28,6 +29,7 @@ class BlobActionCloseCrate : ActionInteractBase
         if(crate)
         {
             crate.Close();
+            GetRPCManager.SendRPC(modname, "setOpenRPC", new Param1<string>(false));
         }
     }
 }
