@@ -39,7 +39,7 @@ class CfgVehicles
 		hologramMaterial="wooden_case";
 		hologramMaterialPath="dz\gear\camping\data";
 		weight=10000;
-		itemSize[]={5,11};
+		itemSize[]={10,5};
 		class Cargo
 		{
 			itemsCargoSize[]={8,10};

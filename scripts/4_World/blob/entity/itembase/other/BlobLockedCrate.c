@@ -94,7 +94,7 @@ class BlobLockedCrate : Container_Base
 
         bool toLock = data.param1;
 
-        if(lock)
+        if(toLock)
             Lock();
         else
             Unlock();
