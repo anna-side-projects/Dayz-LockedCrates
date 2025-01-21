@@ -29,7 +29,7 @@ class BlobActionLockCrate : ActionInteractBase
         if(crate)
         {
             crate.Lock();
-            GetRPCManager().SendRPC(modname, "setLockedRPC", new Param1<string>(true));
+            GetRPCManager().SendRPC(modname, "setLockedRPC", new Param1<bool>(true));
         }
     }
 }
